@@ -1,4 +1,5 @@
 import { Dialect, Sequelize } from 'sequelize';
+import * as pg from 'pg';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -10,7 +11,8 @@ const dbPassword = process.env.DB_PASSWORD;
 
 const sequelizeConnection = new Sequelize(dbName, dbUser, dbPassword, {
     host: dbHost,
-    dialect: dbDriver
+    dialect: dbDriver,
+    dialectModule: pg
 });
 
 export default sequelizeConnection;
